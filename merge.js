@@ -32,6 +32,7 @@ Promise.all(folders.map((folder) => {
 ).then(() =>{
      console.log("Extraction of folders complete!");
      mergeFolders();
+})
 
 async function unzipFolder(path, folder){
     console.log("Unzipping folder " + path + ".......");
@@ -49,7 +50,7 @@ function mergeFolders(){
     });
 
     console.log("Cleaning up....");
-    dirs(_dirname + inputDir).forEach((dir) => {
+    dirs(__dirname + inputDir).forEach((dir) => {
         fs.rmdir(dir, { recursive: true }).then(() => console.log('directory removed!'));
     });
 }
