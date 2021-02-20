@@ -5,7 +5,7 @@ const fs = require('fs');
 const { join } = require('path');
 const { exit } = require('process');
 
-let outputDir = process.argv[2];
+let outputDir = "./output/" + process.argv[2];
 
 if (!fs.existsSync(outputDir)){
     fs.mkdirSync(outputDir);
@@ -47,10 +47,5 @@ function mergeFolders(){
         console.log("Merging folder " + path + "....");
         mergeDirs(path, outputDir, 'overwrite');
         console.log("Merged folder " + path) 
-    });
-
-    console.log("Cleaning up....");
-    dirs(__dirname + inputDir).forEach((dir) => {
-        fs.rmdir(dir, { recursive: true }).then(() => console.log('directory removed!'));
     });
 }
